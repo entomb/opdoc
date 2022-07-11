@@ -2,7 +2,7 @@ import {Command, Flags} from '@oclif/core'
 import {readDirectory, readFile, writeFile} from '../modules/io'
 import {sequence} from '../modules/helpers'
 import {markdown} from '../modules/markdown'
-import {wrapper} from '../modules/wrapper'
+import {wrapper, sanitize} from '../modules/html'
 
 export default class Compile extends Command {
   static description = 'Parse .md files to html'
@@ -50,6 +50,7 @@ export default class Compile extends Command {
     // transform markdown
     const html: string = await sequence(source, [
       markdown,
+      sanitize,
       wrapper,
     ])
 
