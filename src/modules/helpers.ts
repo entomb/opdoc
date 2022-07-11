@@ -1,4 +1,4 @@
-import {FnTransformer} from '../types'
+import { FnTransformer } from '../types'
 import slugify from 'slugify'
 
 export const sequence = async (original: string, fnArr: FnTransformer[]): ReturnType<FnTransformer> => {

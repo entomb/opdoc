@@ -1,8 +1,8 @@
-import {Command, Flags} from '@oclif/core'
-import {sequence} from '../modules/helpers'
-import {tableOfContents} from '../modules/markdown'
-import {readDirectory, writeFile} from '../modules/io'
-import {FnTransformer} from '../types'
+import { Command, Flags } from '@oclif/core'
+import { sequence } from '../modules/helpers'
+import { tableOfContents } from '../modules/markdown'
+import { readDirectory, writeFile } from '../modules/io'
+import { FnTransformer } from '../types'
 import { OptionFlag } from '@oclif/core/lib/interfaces'
 
 export default class Compile extends Command {
@@ -24,14 +24,14 @@ export default class Compile extends Command {
       required: false,
       default: false,
     }),
-    tocString: Flags.string({ 
+    tocString: Flags.string({
       helpGroup: 'Table of Contents',
       char: 'T',
       description: 'string to replace with Table of Contents',
       required: false,
       default: '<!-- TOC -->',
     }),
-    tocDepth: Flags.integer({ 
+    tocDepth: Flags.integer({
       helpGroup: 'Table of Contents',
       char: 'd',
       description: 'depth when building Table of Contents.',
@@ -39,10 +39,10 @@ export default class Compile extends Command {
       default: 6,
       parse: async (input) => {
         const n = parseInt(input)
-        if(n<=0 || n>6) throw new Error("--tocDepth must have a value between 0 and 6")
+        if (n <= 0 || n > 6) throw new Error("--tocDepth must have a value between 0 and 6")
         return n
       }
-    }) as OptionFlag< 1 | 2 | 3 | 4 | 5 | 6>,
+    }) as OptionFlag<1 | 2 | 3 | 4 | 5 | 6>,
   }
 
   static args = [
@@ -61,7 +61,7 @@ export default class Compile extends Command {
 
   async run(): Promise<void> {
     this.log(`Running ${this.constructor.name}`)
-    const {args, flags} = await this.parse(Compile)
+    const { args, flags } = await this.parse(Compile)
 
     this.log(`+ loading **/*.md files from ${args.path}`)
     const source = await readDirectory(args.path)

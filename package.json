@@ -1,6 +1,6 @@
 {
   "name": "opdoc",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "One Page Documentation",
   "author": "Jonathan Tavares @entomb",
   "bin": {
@@ -9,7 +9,7 @@
   "homepage": "https://github.com/entomb/opdoc",
   "license": "MIT",
   "main": "dist/index.js",
-  "repository": "entomb/opdoc",
+  "repository": "git@github.com:entomb/opdoc.git",
   "files": [
     "/bin",
     "/dist",
@@ -79,7 +79,9 @@
   },
   "bugs": "https://github.com/entomb/opdoc/issues",
   "keywords": [
-    "oclif"
+    "oclif",
+    "markdown",
+    "documentation"
   ],
   "types": "dist/index.d.ts"
 }
