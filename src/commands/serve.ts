@@ -95,7 +95,7 @@ export default class Serve extends Command {
     }
 
     // transform markdown
-    const requestListener = async function (req: any, res: any) {
+    const requestListener: http.RequestListener = async function (req, res) {
       if(req.url !== '/') {
         res.writeHead(404)
         res.end();

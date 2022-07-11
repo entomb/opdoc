@@ -5,6 +5,7 @@ import {
   lstatSync as fsDataSync,
 } from 'node:fs'
 import * as glob from 'glob'
+import globby = require('globby')
 
 export const readFile = (file: string):Promise<string> => {
   return new Promise((resolve, reject) => {
@@ -33,17 +34,11 @@ export const copyFile = (src:string, dest:string):Promise<boolean> => {
   })
 }
 
-export const readDirectory = (path:string): Promise<string> => {
-  return new Promise((resolve, reject) => {
-    glob(path + '/**/*.md', {}, (err, files) => {
-      if (err) return reject(err)
-      Promise.all(files.map(filename => {
-        return readFile(filename)
-      })).then(content => {
-        resolve(content.map(c => c.toString()).join('\n\n'))
-      })
-    })
-  })
+export const readDirectory = async (path:string): Promise<string> => {
+  const files = await globby(path + '/**/*.md') 
+  const content = await Promise.all(files.map(filename => readFile(filename)))
+
+  return content.map(c => c.toString()).join('\n\n') 
 }
 
 export const readFileOrDirectory = (path: string): Promise<string> => {
