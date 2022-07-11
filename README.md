@@ -17,7 +17,7 @@
 ```sh-session
 $ npm install -g opdoc
 
-$ opdoc serve
+$ opdoc serve ./docs/
 Running Serve
 + serving on http://localhost:8181
 ...
