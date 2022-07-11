@@ -1,34 +1,33 @@
-import {marked, Renderer } from 'marked'
-import {FnTransformer, FnTransformerFactory, TokenHeading} from '../types'
+import { marked, Renderer } from 'marked'
+import { FnTransformer, FnTransformerFactory, TokenHeading } from '../types'
 import { slug } from './helpers'
 
 // Override render functions
-const tocLink = (text:string):string => `- [${text}](#${slug(text)})`
+const tocLink = (text: string): string => `- [${text}](#${slug(text)})`
 const renderer: Partial<Renderer> = {
-  heading(text: string, level: 1|2|3|4|5|6) {
+  heading(text: string, level: 1 | 2 | 3 | 4 | 5 | 6) {
     const escapedText = slug(text)
-
     return `<h${level}>
-  <a name="${escapedText}" class="anchor" href="#${escapedText}">
-    <span class="header-link">#!</span>
-  </a>
   ${text}
+  <a name="${escapedText}" class="anchor" href="#${escapedText}">
+    <span class="header-link">&#128279;</span>
+  </a> 
 </h${level}>`
   },
 }
 
 
-export const generateOfContents = (source: string, depth: number):string => {
+export const generateOfContents = (source: string, depth: number): string => {
   return (marked
     .lexer(source)
     .filter(t => t.type === 'heading') as TokenHeading[])
     .filter(h => h.depth <= depth)
-    .map((heading) => new Array(heading.depth-1).fill("  ").concat(tocLink(heading.text)).join(""))
+    .map((heading) => new Array(heading.depth - 1).fill("  ").concat(tocLink(heading.text)).join(""))
     .join("\n")
 }
 
 
-marked.use({renderer})
+marked.use({ renderer })
 marked.setOptions({
   gfm: true,
   smartypants: false,
@@ -47,9 +46,9 @@ export const markdown: FnTransformer = async source => {
 }
 
 export const tableOfContents: FnTransformerFactory<{
-  finder: string, 
+  finder: string,
   depth: 1 | 2 | 3 | 4 | 5 | 6
-}> = ({finder, depth}) => async source => {
+}> = ({ finder, depth }) => async source => {
   return source.replace(finder, generateOfContents(source, depth))
 }
 

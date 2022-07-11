@@ -7,7 +7,7 @@ import {
 import * as glob from 'glob'
 import globby = require('globby')
 
-export const readFile = (file: string):Promise<string> => {
+export const readFile = (file: string): Promise<string> => {
   return new Promise((resolve, reject) => {
     fsReadFile(file, 'utf8', (err, data) => {
       if (err) return reject(err)
@@ -16,7 +16,7 @@ export const readFile = (file: string):Promise<string> => {
   })
 }
 
-export const writeFile = (file: string, content:string):Promise<boolean> => {
+export const writeFile = (file: string, content: string): Promise<boolean> => {
   return new Promise((resolve, reject) => {
     fsWriteFile(file, content, err => {
       if (err) return reject(err)
@@ -25,7 +25,7 @@ export const writeFile = (file: string, content:string):Promise<boolean> => {
   })
 }
 
-export const copyFile = (src:string, dest:string):Promise<boolean> => {
+export const copyFile = (src: string, dest: string): Promise<boolean> => {
   return new Promise((resolve, reject) => {
     fsCopyFile(src, dest, err => {
       if (err) return reject(err)
@@ -34,11 +34,11 @@ export const copyFile = (src:string, dest:string):Promise<boolean> => {
   })
 }
 
-export const readDirectory = async (path:string): Promise<string> => {
-  const files = await globby(path + '/**/*.md') 
+export const readDirectory = async (path: string): Promise<string> => {
+  const files = await globby(path + '/**/*.md')
   const content = await Promise.all(files.map(filename => readFile(filename)))
 
-  return content.map(c => c.toString()).join('\n\n') 
+  return content.map(c => c.toString()).join('\n\n')
 }
 
 export const readFileOrDirectory = (path: string): Promise<string> => {

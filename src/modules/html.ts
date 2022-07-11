@@ -1,7 +1,7 @@
 import * as sanitizeHtml from 'sanitize-html'
-import {minify as minifyHtml} from 'html-minifier-terser'
+import { minify as minifyHtml } from 'html-minifier-terser'
 
-import {FnTransformer} from '../types'
+import { FnTransformer } from '../types'
 
 export const wrapper: FnTransformer = async content => `<html>
 <HEAD>
