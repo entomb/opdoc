@@ -6,6 +6,7 @@ import { wrapper, sanitize, minimize } from '../modules/html'
 import { FnTransformer } from '../types'
 import { OptionFlag } from '@oclif/core/lib/interfaces'
 import * as http from 'http'
+import { getServer } from '../modules/http'
 
 export default class Serve extends Command {
   static description = 'create an http server for .md files'
@@ -111,7 +112,7 @@ export default class Serve extends Command {
 
     // write
     this.log(`+ serving on http://localhost:${flags.port}`)
-    const server = http.createServer(requestListener);
+    const server = getServer(requestListener);
     server.listen(flags.port);
   }
 }
