@@ -1,10 +1,10 @@
-import {Command, Flags} from '@oclif/core'
-import {readFileOrDirectory, writeFile} from '../modules/io'
-import {sequence} from '../modules/helpers'
-import {markdown, tableOfContents} from '../modules/markdown'
-import {wrapper, sanitize, minimize} from '../modules/html'
-import {FnTransformer} from '../types'
-import { OptionFlag } from '@oclif/core/lib/interfaces' 
+import { Command, Flags } from '@oclif/core'
+import { readFileOrDirectory, writeFile } from '../modules/io'
+import { sequence } from '../modules/helpers'
+import { markdown, tableOfContents } from '../modules/markdown'
+import { wrapper, sanitize, minimize } from '../modules/html'
+import { FnTransformer } from '../types'
+import { OptionFlag } from '@oclif/core/lib/interfaces'
 
 export default class Parse extends Command {
   static description = 'Parse .md files to html'
@@ -43,7 +43,7 @@ export default class Parse extends Command {
       description: 'minimize HTML output',
       required: false,
       default: false,
-    }), 
+    }),
     notoc: Flags.boolean({
       helpGroup: 'Table of Contents',
       char: 't',
@@ -51,14 +51,14 @@ export default class Parse extends Command {
       required: false,
       default: false,
     }),
-    tocString: Flags.string({ 
+    tocString: Flags.string({
       helpGroup: 'Table of Contents',
       char: 'T',
       description: 'string to replace with Table of Contents',
       required: false,
       default: '<!-- TOC -->',
     }),
-    tocDepth: Flags.integer({ 
+    tocDepth: Flags.integer({
       helpGroup: 'Table of Contents',
       char: 'd',
       description: 'depth when building Table of Contents.',
@@ -66,15 +66,15 @@ export default class Parse extends Command {
       default: 6,
       parse: async (input) => {
         const n = parseInt(input)
-        if(n<=0 || n>6) throw new Error("--tocDepth must have a value between 0 and 6")
+        if (n <= 0 || n > 6) throw new Error("--tocDepth must have a value between 0 and 6")
         return n
       }
-    }) as OptionFlag< 1 | 2 | 3 | 4 | 5 | 6>,
+    }) as OptionFlag<1 | 2 | 3 | 4 | 5 | 6>,
   }
 
   async run(): Promise<void> {
     this.log(`Running ${this.constructor.name}`)
-    const {args, flags} = await this.parse(Parse)
+    const { args, flags } = await this.parse(Parse)
 
     // load source
     this.log(`+ loading ${args.source}`)

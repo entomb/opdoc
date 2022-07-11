@@ -1,22 +1,22 @@
-import {Command, Flags} from '@oclif/core'
-import {readFileOrDirectory} from '../modules/io'
-import {sequence} from '../modules/helpers'
-import {markdown, tableOfContents} from '../modules/markdown'
-import {wrapper, sanitize, minimize} from '../modules/html'
-import {FnTransformer} from '../types'
+import { Command, Flags } from '@oclif/core'
+import { readFileOrDirectory } from '../modules/io'
+import { sequence } from '../modules/helpers'
+import { markdown, tableOfContents } from '../modules/markdown'
+import { wrapper, sanitize, minimize } from '../modules/html'
+import { FnTransformer } from '../types'
 import { OptionFlag } from '@oclif/core/lib/interfaces'
-import * as http from 'http' 
+import * as http from 'http'
 
 export default class Serve extends Command {
   static description = 'create an http server for .md files'
-
+  static usage = `serve --port 8080`
   static examples = [`
      $ opdoc serve ./path/to/folder --port 8181
      Running Serve
       + serving on http://localhost:8181
     `,
   ]
- 
+
   static args = [
     {
       name: 'source',
@@ -44,7 +44,7 @@ export default class Serve extends Command {
       description: 'minimize HTML output',
       required: false,
       default: false,
-    }), 
+    }),
     notoc: Flags.boolean({
       helpGroup: 'Table of Contents',
       char: 't',
@@ -67,16 +67,16 @@ export default class Serve extends Command {
       default: 6,
       parse: async (input, context) => {
         const n = parseInt(input)
-        if(n<=0 || n>6) context.error("--tocDepth must have a value between 0 and 6")
+        if (n <= 0 || n > 6) context.error("--tocDepth must have a value between 0 and 6")
         return n
       }
-    }) as OptionFlag< 1 | 2 | 3 | 4 | 5 | 6>,
+    }) as OptionFlag<1 | 2 | 3 | 4 | 5 | 6>,
   }
 
 
   async run(): Promise<void> {
     this.log(`Running ${this.constructor.name}`)
-    const {args, flags} = await this.parse(Serve)
+    const { args, flags } = await this.parse(Serve)
 
     // create command
     const command = async () => {
@@ -96,7 +96,7 @@ export default class Serve extends Command {
 
     // transform markdown
     const requestListener: http.RequestListener = async function (req, res) {
-      if(req.url !== '/') {
+      if (req.url !== '/') {
         res.writeHead(404)
         res.end();
         return;
@@ -107,10 +107,10 @@ export default class Serve extends Command {
       res.writeHead(200);
       res.end(html);
     }
- 
+
 
     // write
-    this.log(`+ serving on http://localhost:${flags.port}`) 
+    this.log(`+ serving on http://localhost:${flags.port}`)
     const server = http.createServer(requestListener);
     server.listen(flags.port);
   }
