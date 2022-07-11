@@ -7,38 +7,34 @@
 ---
 
 <!-- toc -->
-
-- [OPDOC](#opdoc)
-- [Usage](#usage)
-- [Commands](#commands)
+* [OPDOC](#opdoc)
+* [Usage](#usage)
+* [Commands](#commands)
 <!-- tocstop -->
 
 # Usage
 
 <!-- usage -->
-
 ```sh-session
 $ npm install -g opdoc
 $ opdoc COMMAND
 running command...
 $ opdoc (--version)
-opdoc/0.0.0 linux-x64 node-v16.14.0
+opdoc/0.1.0 linux-x64 node-v16.14.0
 $ opdoc --help [COMMAND]
 USAGE
   $ opdoc COMMAND
 ...
 ```
-
 <!-- usagestop -->
 
 # Commands
 
 <!-- commands -->
-
-- [`opdoc compile PATH [OUTPUT]`](#opdoc-compile-path-output)
-- [`opdoc help [COMMAND]`](#opdoc-help-command)
-- [`opdoc parse SOURCE [OUTPUT]`](#opdoc-parse-source-output)
-- [`opdoc serve SOURCE`](#opdoc-serve-source)
+* [`opdoc compile PATH [OUTPUT]`](#opdoc-compile-path-output)
+* [`opdoc help [COMMAND]`](#opdoc-help-command)
+* [`opdoc parse SOURCE [OUTPUT]`](#opdoc-parse-source-output)
+* [`opdoc serve SOURCE`](#opdoc-serve-source)
 
 ## `opdoc compile PATH [OUTPUT]`
 
@@ -67,7 +63,7 @@ EXAMPLES
     + writing to ./README.md
 ```
 
-_See code: [dist/commands/compile.ts](https://github.com/entomb/opdoc/blob/v0.0.0/dist/commands/compile.ts)_
+_See code: [dist/commands/compile.ts](https://github.com/entomb/opdoc/blob/v0.1.0/dist/commands/compile.ts)_
 
 ## `opdoc help [COMMAND]`
 
@@ -118,7 +114,7 @@ EXAMPLES
        $ opdoc parse ./path/to/folder
 ```
 
-_See code: [dist/commands/parse.ts](https://github.com/entomb/opdoc/blob/v0.0.0/dist/commands/parse.ts)_
+_See code: [dist/commands/parse.ts](https://github.com/entomb/opdoc/blob/v0.1.0/dist/commands/parse.ts)_
 
 ## `opdoc serve SOURCE`
 
@@ -150,6 +146,5 @@ EXAMPLES
         + serving on http://localhost:8181
 ```
 
-_See code: [dist/commands/serve.ts](https://github.com/entomb/opdoc/blob/v0.0.0/dist/commands/serve.ts)_
-
+_See code: [dist/commands/serve.ts](https://github.com/entomb/opdoc/blob/v0.1.0/dist/commands/serve.ts)_
 <!-- commandsstop -->
