@@ -2,6 +2,7 @@ import {
   readFile as fsReadFile,
   writeFile as fsWriteFile,
   copyFile as fsCopyFile,
+  lstatSync as fsDataSync,
 } from 'node:fs'
 import * as glob from 'glob'
 
@@ -43,4 +44,16 @@ export const readDirectory = (path:string): Promise<string> => {
       })
     })
   })
+}
+
+export const readFileOrDirectory = (path: string): Promise<string> => {
+  if (fsDataSync(path).isDirectory()) {
+    return readDirectory(path)
+  }
+
+  if (fsDataSync(path).isFile()) {
+    return readFile(path)
+  }
+
+  throw new Error(`path ${path} is not a file or directory`)
 }

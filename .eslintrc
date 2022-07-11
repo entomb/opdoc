@@ -1,5 +1,13 @@
 {
-  "extends": ["oclif", "oclif-typescript"],
+  "root": true,
+  "parser": "@typescript-eslint/parser",
+  "plugins": ["@typescript-eslint"],
+  "extends": [
+    "eslint:recommended",
+    "plugin:@typescript-eslint/eslint-recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:import/typescript"
+  ],
   "rules": {
     "unicorn/no-array-reduce": "off"
   }

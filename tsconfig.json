@@ -7,9 +7,9 @@
     "rootDir": "src",
     "strict": true,
     "target": "es2019",
-    "baseUrl": "src",
   },
-  "include": [
-    "src/**/*"
-  ]
+  "include": ["src/**/*"],
+  "ts-node": {
+    "require": ["tsconfig-paths/register"]
+  }
 }
