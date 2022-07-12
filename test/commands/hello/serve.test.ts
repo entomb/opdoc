@@ -5,7 +5,6 @@ describe('serve', () => {
   test
     .stdout()
     .command(['serve', './docs'])
-    .timeout(1000)
     .it('runs serve cmd', ctx => {
       closeServer(() => {
         expect(ctx.stdout).to.contain('Running Serve')
@@ -16,7 +15,6 @@ describe('serve', () => {
   test
     .stdout()
     .command(['serve', './docs', '--port=3333'])
-    .timeout(1000)
     .it('allows --port flag', ctx => {
       closeServer(() => {
         expect(ctx.stdout).to.contain('http://localhost:3333')
