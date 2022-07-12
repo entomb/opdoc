@@ -2,6 +2,7 @@ import { marked } from 'marked'
 import { FnTransformer, FnTransformerFactory, TokenHeading } from '../types'
 import { slug } from './helpers'
 import { renderer } from './renderer'
+import * as prism from 'prismjs'
 
 // Override render functions
 const tocLink = (text: string): string => `- [${text}](#${slug(text)})`
@@ -22,6 +23,10 @@ marked.use({ renderer })
 marked.setOptions({
   gfm: true,
   smartypants: false,
+  highlight: (source: string, lang: string) => {
+    const option = prism.languages[lang] || prism.languages.js
+    return prism.highlight(source, option, lang)
+  },
   // renderer: new marked.Renderer(),
   // highlight: function(code, lang) {
   //   const hljs = require('highlight.js');
@@ -42,7 +47,6 @@ export const tableOfContents: FnTransformerFactory<{
 }> = ({ finder, depth }) => async source => {
   return source.replace(finder, generateOfContents(source, depth))
 }
-
 
 
 //export const tableOfContents: FnTransformer = async source => TOC.process(source)

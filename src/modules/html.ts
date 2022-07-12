@@ -8,6 +8,8 @@ export const wrapper: FnTransformerFactory<{ source: string }> = ({ source }) =>
 <meta charset="UTF-8">
 <title>example?</title>
 <script src="https://cdn.tailwindcss.com"></script>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.28.0/themes/prism-tomorrow.min.css" integrity="sha512-vswe+cgvic/XBoF1OcM/TeJ2FW0OofqAVdCZiEYkd6dwGXthvkSFWOoGGJgS2CW70VK5dQM5Oh+7ne47s74VTg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 <style type="text/tailwindcss"> 
 @layer components {
   #nav>ul>li>a {
@@ -36,6 +38,12 @@ export const wrapper: FnTransformerFactory<{ source: string }> = ({ source }) =>
   h2:hover a,
   h1:hover a {
     display: inline-flex;
+  }
+}
+
+@layer components {
+  main pre {
+    @apply m-2 mt-8 mb-8 p-2 max-h-[500px] overflow-auto rounded dark:ring-2 dark:ring-inset dark:ring-white/10 bg-slate-800
   }
 }
   </style>
