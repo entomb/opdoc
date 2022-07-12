@@ -2,7 +2,7 @@
 
 ## What's OPDOC?
 
-**One Page Documentation** is a one-stop-shop CLI tool for creating single page static documentation sites from markdown. OPDOC is a bunch of known libraries [glob](https://www.npmjs.com/package/glob), [sanitize-html](https://www.npmjs.com/package/sanitize-html), [html-minifier-terser](https://www.npmjs.com/package/html-minifier-terser), [slugify](https://www.npmjs.com/package/slugify) duct-taped together with [oclif](https://oclif.io/)
+**One Page Documentation** is a one-stop-shop CLI tool for creating single page static documentation sites from markdown. that.. and also a bunch of known libraries [glob](https://www.npmjs.com/package/glob), [sanitize-html](https://www.npmjs.com/package/sanitize-html), [html-minifier-terser](https://www.npmjs.com/package/html-minifier-terser), [slugify](https://www.npmjs.com/package/slugify) duct-taped together with [oclif](https://oclif.io/)
 
 ---
 
