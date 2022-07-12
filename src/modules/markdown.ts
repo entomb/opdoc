@@ -1,20 +1,11 @@
-import { marked, Renderer } from 'marked'
+import { marked } from 'marked'
 import { FnTransformer, FnTransformerFactory, TokenHeading } from '../types'
 import { slug } from './helpers'
+import { renderer } from './renderer'
 
 // Override render functions
 const tocLink = (text: string): string => `- [${text}](#${slug(text)})`
-const renderer: Partial<Renderer> = {
-  heading(text: string, level: 1 | 2 | 3 | 4 | 5 | 6) {
-    const escapedText = slug(text)
-    return `<h${level}>
-  ${text}
-  <a name="${escapedText}" class="anchor" href="#${escapedText}">
-    <span class="header-link">&#128279;</span>
-  </a> 
-</h${level}>`
-  },
-}
+
 
 
 export const generateOfContents = (source: string, depth: number): string => {
@@ -51,7 +42,6 @@ export const tableOfContents: FnTransformerFactory<{
 }> = ({ finder, depth }) => async source => {
   return source.replace(finder, generateOfContents(source, depth))
 }
-
 
 
 

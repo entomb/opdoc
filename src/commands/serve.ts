@@ -10,7 +10,7 @@ import { getServer } from '../modules/http'
 
 export default class Serve extends Command {
   static description = 'create an http server for .md files'
-  static usage = `serve --port 8080`
+
   static examples = [`
      $ opdoc serve ./path/to/folder --port 8181
      Running Serve
@@ -90,7 +90,7 @@ export default class Serve extends Command {
         !flags.notoc && tableOfContents({ finder: flags.tocString, depth: flags.tocDepth }),
         markdown,
         flags.sanitize && sanitize,
-        wrapper,
+        wrapper({ source }),
         flags.minimize && minimize,
       ].filter(f => f !== false) as FnTransformer[])
     }
