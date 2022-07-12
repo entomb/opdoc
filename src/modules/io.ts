@@ -9,9 +9,9 @@ import globby = require('globby')
 
 export const readFile = (file: string): Promise<string> => {
   return new Promise((resolve, reject) => {
-    fsReadFile(file, 'utf8', (err, data) => {
+    fsReadFile(file, 'utf-8', (err, data) => {
       if (err) return reject(err)
-      resolve(data.toString())
+      resolve(data)
     })
   })
 }

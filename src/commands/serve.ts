@@ -65,7 +65,7 @@ export default class Serve extends Command {
       char: 'd',
       description: 'depth when building Table of Contents.',
       required: false,
-      default: 6,
+      default: 2,
       parse: async (input, context) => {
         const n = parseInt(input)
         if (n <= 0 || n > 6) context.error("--tocDepth must have a value between 0 and 6")

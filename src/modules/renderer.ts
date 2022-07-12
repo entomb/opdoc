@@ -6,17 +6,16 @@ const heading: Renderer['heading'] = (text, level) => {
 
   const classname = () => {
     switch (level) {
-      case 1: return "text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight dark:text-slate-200"
+      case 1: return "mt-8 mb-2 text-3xl sm:text-4xl font-extrabold"
+      case 2: return "mt-4 mb-2 text-2xl sm:text-3xl font-extrabold"
+      case 3: return "mt-2 mb-2 text-xl sm:text-2xl font-bold"
       default:
-        return "text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight dark:text-slate-200"
+        return "mt-8 mb-2 text-lg sm:text-xl font-bold"
     }
   };
 
-  return `<h${level} class="${classname()}" id="#${escapedText}">
-  ${text}
-  <a href="#${escapedText}" class="absolute -ml-10 flex items-center opacity-0 border-0 group-hover:opacity-100" aria-label="Anchor">
-    <div class="w-6 h-6 text-slate-400 ring-1 ring-slate-900/5 rounded-md shadow-sm flex items-center justify-center hover:ring-slate-900/10 hover:shadow hover:text-slate-700 dark:bg-slate-700 dark:text-slate-300 dark:shadow-none dark:ring-0"><svg width="12" height="12" fill="none" aria-hidden="true"><path d="M3.75 1v10M8.25 1v10M1 3.75h10M1 8.25h10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"></path></svg></div>
-  </a>
+  return `<h${level} class="${classname()} text-slate-900 tracking-tight dark:text-slate-200" id="${escapedText}">
+  ${text} <a href="#${escapedText}" class="ml-2 inline-flex hidden" aria-label="Anchor">&#128279;</a>
 </h${level}>`
 
 

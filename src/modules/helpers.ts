@@ -7,7 +7,7 @@ export const sequence = async (original: string, fnArr: FnTransformer[]): Return
 
 export const slug = (text: string): string => slugify(text, {
   replacement: '-',
-  remove: undefined,
+  remove: /amp/,
   lower: true,
   strict: true,
   trim: true
