@@ -2,8 +2,6 @@ import { Renderer } from "marked"
 import { slug } from "./helpers"
 
 const heading: Renderer['heading'] = (text, level) => {
-  const escapedText = slug(text)
-
   const classname = () => {
     switch (level) {
       case 1: return "mt-8 mb-2 text-3xl sm:text-4xl font-extrabold"
@@ -14,9 +12,23 @@ const heading: Renderer['heading'] = (text, level) => {
     }
   };
 
-  return `<h${level} class="${classname()} text-slate-900 tracking-tight dark:text-slate-200" id="${escapedText}">
-  ${text} <a href="#${escapedText}" class="ml-2 inline-flex hidden" aria-label="Anchor">&#128279;</a>
+  return `<h${level} class="${classname()} text-slate-900 tracking-tight dark:text-slate-200" id="${slug(text)}">
+  ${text} <a href="#${slug(text)}" class="ml-2 inline-flex hidden" aria-label="Anchor">&#128279;</a>
 </h${level}>`
+}
+
+const strong: Renderer['strong'] = (text) => {
+  return `<b class="font-bold">${text}</b>`
+}
+
+export const renderer: Partial<Renderer> = {
+  heading,
+  strong: (text) => `<b class="font-bold">${text}</b>`,
+  // text: (text) => `<p class="mt-4 mb-4 font-md">${text}</b>`
+}
+
+
+
 
 
   // constructor(options?: MarkedOptions);
@@ -54,11 +66,3 @@ const heading: Renderer['heading'] = (text, level) => {
   // link(this: Renderer | RendererThis, href: string | null, title: string | null, text: string): string | T;
   // image(this: Renderer | RendererThis, href: string | null, title: string | null, text: string): string | T;
   // text(this: Renderer | RendererThis, text: string): string | T;
-}
-
-
-
-
-export const renderer: Partial<Renderer> = {
-  heading,
-}
