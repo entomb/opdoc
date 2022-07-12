@@ -30,6 +30,11 @@ export const wrapper: FnTransformerFactory<{ source: string }> = ({ source }) =>
     @apply pl-8 text-slate-500
   }
 
+  #nav a.aActive {
+    color: #FFF;
+    border-left: 3px solid #FFF;
+    margin-left: -3px;
+  }
 
   h6:hover a,
   h5:hover a,
@@ -63,6 +68,29 @@ export const wrapper: FnTransformerFactory<{ source: string }> = ({ source }) =>
     </div>
   </div>
 </div>
+<script type="text/javascript">
+(function() {
+  const heads = [...document.querySelectorAll('h1,h2,h3,h4,h5,h6')]
+  window.addEventListener('scroll', () => {
+    try{
+      const firstHead = heads.filter(h => h.getBoundingClientRect().top > -20).shift()
+      const currentA = document.querySelector('#nav a[href="#'+firstHead.id+'"]')
+
+      
+      if(currentA){
+        const currentHead = document.querySelector('.aActive');
+        if(currentHead) {
+          currentHead.classList.remove('aActive');
+        }
+        currentA.classList.add('aActive')
+      } 
+      console.log(currentA, '#nav a[href="'+firstHead.id+'"]')
+    } catch(e){
+      console.log(e)
+    } 
+  })
+})()
+</script>
 </body>
 </html>`
 
