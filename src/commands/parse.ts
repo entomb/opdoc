@@ -85,7 +85,7 @@ export default class Parse extends Command {
       !flags.notoc && tableOfContents({ finder: flags.tocString, depth: flags.tocDepth }),
       markdown,
       flags.sanitize && sanitize,
-      wrapper,
+      wrapper({ source }),
       flags.minimize && minimize,
     ].filter(f => f !== false) as FnTransformer[])
 
