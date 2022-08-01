@@ -1,7 +1,7 @@
 import { marked } from 'marked'
 import { FnTransformer, FnTransformerFactory, TokenHeading } from '../types'
 import { slug } from './helpers'
-import { renderer } from './renderer'
+import { emoji, renderer } from './renderer'
 import * as prism from 'prismjs'
 
 // Override render functions
@@ -20,6 +20,7 @@ export const generateOfContents = (source: string, depth: number): string => {
 
 
 marked.use({ renderer })
+marked.use({extensions: [emoji]});
 marked.setOptions({
   gfm: true,
   smartypants: false,

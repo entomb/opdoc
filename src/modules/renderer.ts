@@ -1,5 +1,9 @@
 import { Renderer } from "marked"
 import { slug } from "./helpers"
+import { emojify } from 'node-emoji'
+
+
+
 
 const heading: Renderer['heading'] = (text, level) => {
   const classname = () => {
@@ -12,7 +16,7 @@ const heading: Renderer['heading'] = (text, level) => {
     }
   };
 
-  return `<h${level} class="${classname()} text-slate-900 tracking-tight dark:text-slate-200" id="${slug(text)}">
+  return `${level === 1 ? `</article><article data-for="${slug(text)}">` : ''}<h${level} class="${classname()} text-slate-900 tracking-tight dark:text-slate-200" id="${slug(text)}">
   ${text} <a href="#${slug(text)}" class="ml-2 inline-flex hidden" aria-label="Anchor">&#128279;</a>
 </h${level}>`
 }
@@ -21,11 +25,32 @@ const strong: Renderer['strong'] = (text) => {
   return `<b class="font-bold">${text}</b>`
 }
 
+export const emoji = {
+  name: 'emoji',
+  level: 'inline',                         // This is an inline-level tokenizer
+  start(src: string): number { return src.indexOf(':'); }, // Hint to Marked.js to stop and check for a match
+  tokenizer(src: string, tokens: any): any {
+    const rule = /^:(\w+):/;               // Regex for the complete token, anchor to string start
+    const match = rule.exec(src);
+    if (match) {
+      return {                             // Token to generate
+        type: 'emoji',                     // Should match "name" above
+        raw: match[0],                     // Text to consume from the source
+        emoji: match[1]                    // Additional custom properties
+      };
+    }
+  },
+  renderer(token: any): string {
+    return `<span className="emoji ${token.emoji}">${emojify(token.emoji)}</span>`;
+  }
+};
+
 export const renderer: Partial<Renderer> = {
   heading,
   strong: (text) => `<b class="font-bold">${text}</b>`,
   // text: (text) => `<p class="mt-4 mb-4 font-md">${text}</b>`
 }
+
 
 
 
