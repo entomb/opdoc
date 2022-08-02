@@ -3,14 +3,15 @@ import { minify as minifyHtml } from 'html-minifier-terser'
 import { FnTransformer, FnTransformerFactory } from '../types'
 import { generateOfContents, markdown } from './markdown'
 import { readFile } from './io'
+import { resolve } from 'path'
 
 
 
 
 export const wrapper: FnTransformerFactory<{ source: string }> = ({ source }) => async content => {
-  const html = await readFile(__dirname + "/../template/index.html")
-  const tailwindCss = await readFile(__dirname + "/../template/tailwind.css")
-  const styleCss = await readFile(__dirname + "/../template/style.css")
+  const html = await readFile(resolve(__dirname, "../template/index.html"))
+  const tailwindCss = await readFile(resolve(__dirname, "../template/tailwind.css"))
+  const styleCss = await readFile(resolve(__dirname, "../template/style.css"))
   const sidebar = await markdown(generateOfContents(source, 3))
 
   return html
