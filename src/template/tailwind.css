@@ -1,0 +1,48 @@
+@layer components {
+  #nav > ul > li > a {
+    @apply mb-8 lg:mb-3 font-bold text-slate-900 dark:text-slate-200;
+  }
+  #nav > ul > li {
+    @apply mb-4;
+  }
+  #nav > ul ul {
+    @apply space-y-6 lg:space-y-2 border-l border-slate-100 text-slate-400 dark:border-slate-800;
+  }
+  #nav ul ul a {
+    @apply block border-l pl-4  -ml-px border-transparent hover:border-slate-400 dark:hover:border-slate-500 text-slate-700 hover:text-slate-900 dark:text-slate-400 dark:hover:text-slate-300;
+  }
+
+  #nav ul ul ul a {
+    @apply pl-8 text-slate-500;
+  }
+
+  #nav a.aActive {
+    border-bottom: none;
+    border-left: 3px solid;
+    margin-left: -3px;
+    @apply text-slate-800 dark:text-slate-100 border-slate-800 dark:border-slate-100;
+  }
+
+  #nav > ul > li > a.aActive {
+    border-left: none;
+    border-bottom: 3px solid;
+    margin-left: 0;
+    margin-bottom: -3px;
+    @apply text-slate-800 dark:text-slate-100 border-slate-800 dark:border-slate-100;
+  }
+
+  h6:hover a,
+  h5:hover a,
+  h4:hover a,
+  h3:hover a,
+  h2:hover a,
+  h1:hover a {
+    display: inline-flex;
+  }
+}
+
+@layer components {
+  main pre {
+    @apply m-2 mt-8 mb-8 p-2 max-h-[500px] overflow-auto rounded dark:ring-2 dark:ring-inset dark:ring-white/10 bg-slate-800;
+  }
+}

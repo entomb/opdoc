@@ -1,0 +1,84 @@
+:root {
+  --theme-color: #42b983;
+  --primary: #42b983;
+  --primary-dark: #0e3a26;
+  --primary-light: #bed3ca;
+  --primary-lighter: #e6ffe9;
+  --faded: #f8f8f8;
+}
+
+main h3 + table thead > tr > th:first-child {
+  text-align: center;
+  min-width: 160px;
+}
+
+main h3 + table tbody > tr > td:first-child {
+  text-align: right;
+  background-color: #fff;
+}
+
+main h3 + table tbody > tr:first-child > td:last-child {
+  font-size: 1.1em;
+}
+
+main li > code,
+main td > code {
+  color: var(--primary) !important;
+  border: 1px solid var(--primary-light);
+  border-radius: 5px !important;
+  font-size: 0.8em;
+}
+
+main h3 + table th {
+  background-color: var(--primary-light);
+}
+
+main h3 + table tr > td:last-child {
+  background-color: #fff !important;
+}
+
+main h3 + table tr > td:first-child {
+  background-color: #ccc !important;
+}
+
+main h2 {
+  border-bottom: 2px solid #fff;
+}
+
+main h3 {
+  margin-top: 3rem;
+  border-bottom: 1px solid #fff;
+  padding-top: 8px;
+}
+
+main em {
+  border: 1px solid var(--primary-light);
+  border-radius: 5px;
+  padding: 3px 8px;
+  margin: 2px 4px;
+  color: var(--primary-dark);
+  font-style: normal !important;
+  display: inline-block;
+  font-weight: bold;
+  font-size: 0.9em;
+}
+
+main li > em {
+  padding: 0px 8px;
+}
+
+main blockquote {
+  background-color: var(--faded);
+  margin: 1em 0;
+  padding: 1px 24px 1px 30px;
+}
+
+main blockquote p {
+  color: var(--primary-dark);
+  font-weight: normal !important;
+  font-size: 1.1em;
+}
+
+main p.tip {
+  font-size: 1.1em;
+}

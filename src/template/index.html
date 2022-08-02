@@ -1,0 +1,101 @@
+<html class="dark [--scroll-mt:9.875rem] lg:[--scroll-mt:6.3125rem]">
+
+<HEAD>
+  <meta charset="UTF-8">
+  <title>example?</title>
+  <script src="https://cdn.tailwindcss.com?plugins=typography"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+    }
+  </script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/alohe/emojicloud/emojicloud.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.28.0/themes/prism-tomorrow.min.css"
+    integrity="sha512-vswe+cgvic/XBoF1OcM/TeJ2FW0OofqAVdCZiEYkd6dwGXthvkSFWOoGGJgS2CW70VK5dQM5Oh+7ne47s74VTg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <style type="text/tailwindcss">
+    /*-- tailwind.css --*/
+  </style>
+</HEAD>
+
+<body class="antialiased text-slate-500 dark:text-slate-400 bg-white dark:bg-slate-900">
+  <div class="overflow-hidden">
+    <!-- $darkmodeButton -->
+    <div class="max-w-8xl mx-auto px-4 sm:px-6 md:px-8">
+      <div
+        class="hidden scroll-smooth lg:block fixed z-20 inset-0 top-[3.8125rem] left-[max(0px,calc(50%-45rem))] right-auto w-[19.5rem] pb-10 px-8 overflow-y-auto">
+        <nav id="nav" class="lg:text-sm lg:leading-6 relative">
+          <!-- $sidebar -->
+        </nav>
+      </div>
+      <div class="lg:pl-[19.5rem]">
+        <main class="max-w-5xl mx-auto relative z-20 pt-10 prose prose-md prose-slate dark:prose-invert">
+          <!-- $content -->
+        </main>
+      </div>
+    </div>
+  </div>
+  <script type="text/javascript">
+      (function () {
+
+        function debounce(func, timeout = 300) {
+          let timer;
+          return (...args) => {
+            clearTimeout(timer);
+            timer = setTimeout(() => { func.apply(this, args); }, timeout);
+          };
+        }
+
+
+        const heads = [...document.querySelectorAll('h1,h2,h3,h4,h5,h6')]
+        document.getElementById('nav').addEventListener('click', (ev) => {
+          if (ev.target.tagName.toLowerCase() === 'a') {
+            setTimeout(() => {
+              const currentHead = document.querySelector('.aActive');
+              if (currentHead) {
+                currentHead.classList.remove('aActive');
+              }
+              ev.target.classList.add('aActive')
+
+            }, 66)
+          }
+        })
+
+        window.addEventListener('scroll', debounce(() => {
+          try {
+            const firstHead = heads.filter(h => h.getBoundingClientRect().top > -20).shift()
+            const currentA = document.querySelector('#nav a[href="#' + firstHead.id + '"]')
+
+
+            if (currentA) {
+              const currentHead = document.querySelector('.aActive');
+              if (currentHead) {
+                currentHead.classList.remove('aActive');
+              }
+              currentA.classList.add('aActive')
+              // window.location.hash = '#' + firstHead.id
+
+
+              const upperManagement = currentA.parentElement.parentElement.parentElement
+              if (upperManagement.id === 'nav') {
+                currentA.scrollIntoView()
+              } else {
+                upperManagement.scrollIntoView()
+              }
+
+            }
+            console.log(currentA, '#nav a[href="' + firstHead.id + '"]')
+          } catch (e) {
+            console.log(e)
+          }
+        }, 33))
+        window.dispatchEvent(new Event('scroll'))
+      })()
+  </script>
+  <style>
+    /*-- style.css --*/
+  </style>
+
+</body>
+
+</html>
