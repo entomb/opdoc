@@ -1,4 +1,4 @@
-import { Renderer } from "marked"
+import { Renderer, Lexer, marked } from "marked"
 import { slug } from "./helpers"
 import { emojify } from 'node-emoji'
 
@@ -41,9 +41,51 @@ export const emoji = {
     }
   },
   renderer(token: any): string {
-    return `<span className="emoji ${token.emoji}">${emojify(token.emoji)}</span>`;
+    return `<span class="ec ec-${token.emoji}"></span>`;
   }
 };
+
+
+export const dangerquote = {
+  name: 'dangerquote',
+  level: 'inline',
+  start(src: string): number { return src.indexOf('!>'); },
+  tokenizer(src: string, tokens: any): any {
+    const rule = /^( {0,3}!> ?(paragraph|[^\n]*)(?:\n|$))+/;
+    const match = rule.exec(src);
+    if (match) {
+      return {
+        type: 'dangerquote',
+        raw: "   " + match[1],
+        text: "   " + match[2],
+      };
+    }
+  },
+  renderer(token: any): string {
+    return `<blockquote class="danger">${marked.parse(token.text)}</blockquote>`;
+  }
+};
+
+export const infoquote = {
+  name: 'infoquote',
+  level: 'inline',
+  start(src: string): number { return src.indexOf('?>'); },
+  tokenizer(src: string, tokens: any): any {
+    const rule = /^( {0,3}\?> ?(paragraph|[^\n]*)(?:\n|$))+/;
+    const match = rule.exec(src);
+    if (match) {
+      return {
+        type: 'infoquote',
+        raw: "   " + match[1],
+        text: "   " + match[2],
+      };
+    }
+  },
+  renderer(token: any): string {
+    return `<blockquote class="info">${marked.parse(token.text)}</blockquote>`;
+  }
+};
+
 
 export const renderer: Partial<Renderer> = {
   heading,

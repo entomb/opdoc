@@ -12,4 +12,4 @@ export const slug = (text: string): string => slugify(sanitizeHtml(text, { allow
   lower: true,
   strict: true,
   trim: true
-})
+}).replace("amp", "")

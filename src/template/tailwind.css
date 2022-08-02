@@ -39,10 +39,105 @@
   h1:hover a {
     display: inline-flex;
   }
-}
 
-@layer components {
   main pre {
     @apply m-2 mt-8 mb-8 p-2 max-h-[500px] overflow-auto rounded dark:ring-2 dark:ring-inset dark:ring-white/10 bg-slate-800;
+  }
+
+  main h3 + table {
+    border: 1px solid;
+    @apply border-slate-200 dark:border-slate-400;
+    @apply text-slate-800 dark:text-slate-100;
+  }
+
+  main h3 + table thead > tr > th:first-child {
+    text-align: center;
+    min-width: 100px;
+  }
+
+  main h3 + table tbody > tr > td:first-child {
+    text-align: right;
+    @apply bg-slate-200 text-slate-800 dark:bg-slate-900 dark:text-slate-500;
+  }
+
+  main h3 + table tbody > tr:first-child > td:last-child {
+    font-size: 1.1em;
+  }
+  main h3 + table th {
+    @apply p-1 bg-slate-100 text-slate-800 dark:text-slate-500 dark:bg-slate-800 !important;
+  }
+
+  main h3 + table tr > td:last-child {
+    @apply bg-slate-50 text-slate-800 dark:bg-slate-900 dark:text-slate-100;
+  }
+
+  main p > code,
+  main li > code {
+    border: 1px solid;
+    border-radius: 5px !important;
+    font-size: 0.8em !important;
+    padding: 3px 6px;
+    color: #db2777 !important;
+    @apply border-slate-300 dark:border-slate-600  bg-slate-50 dark:bg-slate-700;
+  }
+
+  main td > code:not(main h3 + table tbody > tr:first-child > td:last-child > code) {
+    border: 1px solid;
+    border-radius: 5px !important;
+    padding: 4px 8px;
+    @apply border-slate-400 dark:border-slate-500 text-slate-600 dark:text-slate-400;
+  }
+
+  main blockquote p::before,
+  main blockquote p::after,
+  p > code::after,
+  p > code::before,
+  main td > code::after,
+  main li > code::after,
+  main td > code::before,
+  main li > code::before {
+    content: none !important;
+  }
+
+  main em {
+    border: 1px solid;
+    border-radius: 5px;
+    padding: 3px 8px;
+    margin: 2px 4px;
+    font-style: normal !important;
+    display: inline-block;
+    font-weight: bold;
+    font-size: 0.9em;
+    @apply border-slate-800 dark:border-slate-600 bg-amber-50 dark:bg-slate-700;
+  }
+
+  main blockquote.danger {
+    @apply bg-rose-50 dark:bg-slate-800;
+    @apply border-l-rose-500 !important;
+  }
+  main blockquote.info {
+    @apply bg-sky-50 dark:bg-slate-800;
+    @apply border-l-sky-500 !important;
+  }
+
+  main blockquote {
+    margin: 1em 0;
+    padding: 1px 24px 1px 30px;
+    @apply bg-amber-50 dark:bg-slate-800;
+    @apply mt-6 mb-12 border-l-lime-500 !important;
+  }
+
+  main blockquote p {
+    font-style: normal;
+    text-decoration: none;
+    font-weight: normal !important;
+    font-size: 1em;
+    @apply text-slate-500 dark:text-slate-400;
+  }
+  main blockquote.danger p {
+    @apply text-rose-800 dark:text-rose-400;
+  }
+  main blockquote.info p {
+    @apply text-sky-800 dark:text-sky-200;
   }
 }
