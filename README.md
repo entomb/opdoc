@@ -26,39 +26,7 @@ Running Serve
 # Commands
 
 <!-- commands -->
-* [`opdoc compile PATH [OUTPUT]`](#opdoc-compile-path-output)
 * [`opdoc help [COMMAND]`](#opdoc-help-command)
-* [`opdoc parse SOURCE [OUTPUT]`](#opdoc-parse-source-output)
-* [`opdoc serve SOURCE`](#opdoc-serve-source)
-
-## `opdoc compile PATH [OUTPUT]`
-
-Compiles all markdown files in target folder into a single markdown file
-
-```
-USAGE
-  $ opdoc compile [PATH] [OUTPUT] [-t] [-T <value>] [-d <value>]
-
-ARGUMENTS
-  PATH    search this directory for *.md files
-  OUTPUT  [default: ./README.md] output filename
-
-TABLE OF CONTENTS FLAGS
-  -T, --tocString=<value>  [default: <!-- TOC -->] string to replace with Table of Contents
-  -d, --tocDepth=<value>   [default: 6] depth when building Table of Contents.
-  -t, --notoc              Skip table of contents generation
-
-DESCRIPTION
-  Compiles all markdown files in target folder into a single markdown file
-
-EXAMPLES
-  $ opdoc compile ./docs
-    Running Compile
-    + loading **/*.md files from ./docs
-    + writing to ./README.md
-```
-
-_See code: [dist/commands/compile.ts](https://github.com/entomb/opdoc/blob/v0.1.11/dist/commands/compile.ts)_
 
 ## `opdoc help [COMMAND]`
 
@@ -79,67 +47,4 @@ DESCRIPTION
 ```
 
 _See code: [@oclif/plugin-help](https://github.com/oclif/plugin-help/blob/v5.1.12/src/commands/help.ts)_
-
-## `opdoc parse SOURCE [OUTPUT]`
-
-Parse .md files to html
-
-```
-USAGE
-  $ opdoc parse [SOURCE] [OUTPUT] [-x] [-m] [-t] [-T <value>] [-d <value>]
-
-ARGUMENTS
-  SOURCE  [default: ./README.md] filename or directory to look for source file
-  OUTPUT  [default: ./index.html] output filename
-
-FLAGS
-  -m, --minimize  minimize HTML output
-  -x, --sanitize  sanitize HTML output
-
-TABLE OF CONTENTS FLAGS
-  -T, --tocString=<value>  [default: <!-- TOC -->] string to replace with Table of Contents
-  -d, --tocDepth=<value>   [default: 6] depth when building Table of Contents.
-  -t, --notoc              Skip table of contents generation
-
-DESCRIPTION
-  Parse .md files to html
-
-EXAMPLES
-  $ opdoc parse README.md
-       $ opdoc parse ./path/to/folder
-```
-
-_See code: [dist/commands/parse.ts](https://github.com/entomb/opdoc/blob/v0.1.11/dist/commands/parse.ts)_
-
-## `opdoc serve SOURCE`
-
-create an http server for .md files
-
-```
-USAGE
-  $ opdoc serve [SOURCE] [-p <value>] [-x] [-m] [-t] [-T <value>] [-d <value>]
-
-ARGUMENTS
-  SOURCE  [default: ./README.md] filename or directory to look for source file
-
-FLAGS
-  -m, --minimize      minimize HTML output
-  -p, --port=<value>  [default: 8181] HTTP server port
-  -x, --sanitize      sanitize HTML output
-
-TABLE OF CONTENTS FLAGS
-  -T, --tocString=<value>  [default: <!-- TOC -->] string to replace with Table of Contents
-  -d, --tocDepth=<value>   [default: 2] depth when building Table of Contents.
-  -t, --notoc              Skip table of contents generation
-
-DESCRIPTION
-  create an http server for .md files
-
-EXAMPLES
-       $ opdoc serve ./path/to/folder --port 8181
-       Running Serve
-        + serving on http://localhost:8181
-```
-
-_See code: [dist/commands/serve.ts](https://github.com/entomb/opdoc/blob/v0.1.11/dist/commands/serve.ts)_
 <!-- commandsstop -->
