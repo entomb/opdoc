@@ -80,7 +80,7 @@
   }
 
   main h4 {
-    @apply border-b p-1 pt-2 pl-0 border-sky-500 dark:border-sky-50 text-sky-800 dark:text-sky-100 !important;
+    @apply p-1 pt-2 pl-0 text-sky-800 dark:text-sky-100 !important;
     font-size: 1.3em !important;
   }
 

@@ -35,7 +35,15 @@ export const copyFile = (src: string, dest: string): Promise<boolean> => {
 }
 
 export const readDirectory = async (path: string): Promise<string> => {
-  const files = await globby(path + '/**/*.md')
+  const files = (await globby(path, {
+    expandDirectories: {
+      files: ['*'],
+      extensions: ['md']
+    }
+  })).sort((a: string, b: string) => {
+    return a.localeCompare(b)
+  });
+  console.log(files)
   const content = await Promise.all(files.map(filename => readFile(filename)))
 
   return content.map(c => c.toString()).join('\n\n')

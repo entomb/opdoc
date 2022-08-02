@@ -63,7 +63,7 @@
 
         window.addEventListener('scroll', debounce(() => {
           try {
-            const firstHead = heads.filter(h => h.getBoundingClientRect().top > -20).shift()
+            const firstHead = heads.filter(h => h.getBoundingClientRect().top > -10).shift()
             const currentA = document.querySelector('#nav a[href="#' + firstHead.id + '"]')
 
 
@@ -76,15 +76,16 @@
               // window.location.hash = '#' + firstHead.id
 
 
-              const upperManagement = currentA.parentElement.parentElement.parentElement
-              if (upperManagement.id === 'nav') {
-                currentA.scrollIntoView()
-              } else {
-                upperManagement.scrollIntoView()
-              }
+              // const upperManagement = currentA.parentElement.parentElement.parentElement
+              // if (upperManagement.id === 'nav') {
+              //   currentA.scrollIntoView()
+              // } else {
+              //   upperManagement.scrollIntoView()
+              // }
+
+              // console.log(upperManagement)
 
             }
-            console.log(currentA, '#nav a[href="' + firstHead.id + '"]')
           } catch (e) {
             console.log(e)
           }
