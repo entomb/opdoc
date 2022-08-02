@@ -1,4 +1,4 @@
-<html class="dark [--scroll-mt:9.875rem] lg:[--scroll-mt:6.3125rem]">
+<html class="[--scroll-mt:9.875rem] lg:[--scroll-mt:6.3125rem]">
 
 <HEAD>
   <meta charset="UTF-8">
@@ -19,16 +19,16 @@
 </HEAD>
 
 <body class="antialiased text-slate-500 dark:text-slate-400 bg-white dark:bg-slate-900">
+  <!-- $darkmodeButton -->
   <div class="overflow-hidden">
-    <!-- $darkmodeButton -->
     <div class="max-w-8xl mx-auto px-4 sm:px-6 md:px-8">
       <div
-        class="hidden scroll-smooth lg:block fixed z-20 inset-0 top-[3.8125rem] left-[max(0px,calc(50%-45rem))] right-auto w-[19.5rem] pb-10 px-8 overflow-y-auto">
+        class="hidden scroll-smooth lg:block fixed z-20 inset-0 top-[3.8125rem] left-[max(0px,calc(50%-45rem))] right-auto w-[22rem] pb-10 px-8 overflow-y-auto">
         <nav id="nav" class="lg:text-sm lg:leading-6 relative">
           <!-- $sidebar -->
         </nav>
       </div>
-      <div class="lg:pl-[19.5rem]">
+      <div class="lg:pl-[22rem]">
         <main class="max-w-5xl mx-auto relative z-20 pt-10 prose prose-md prose-slate dark:prose-invert">
           <!-- $content -->
         </main>
@@ -91,6 +91,54 @@
         }, 33))
         window.dispatchEvent(new Event('scroll'))
       })()
+  </script>
+  <script>
+    const tableTimeout = setInterval(() => {
+
+      const innerTable = [...document.querySelectorAll('h3')].slice(4).map(el => {
+        return {
+          el,
+          table: document.querySelectorAll(`#${el.id}+table`),
+          task: [...document.querySelectorAll(`#${el.id}+table tr td`)].map(td => td.innerHTML).reduce((a, b, i, obj) => ({
+            link: el.innerHTML,
+            title: obj[1],
+            type: obj[3],
+            difficulty: obj[5],
+            priority: obj[7],
+            devImpact: obj[9],
+            userImpact: obj[11],
+            obj,
+          }), {})
+        }
+      })
+        .filter(r => !!r.el && !!r.table && !!r.task.title)
+        .map(row => (`<tr>
+        <td>${row.task.link}</td> 
+        <td style="font-size:.9em;">${row.task.type}</td>
+        <td>${row.task.difficulty}</td>
+        <td>${row.task.priority}</td>
+        </tr>`)).join("\n")
+
+      const taskTable = `<table width="100%">
+          <thead>
+            <tr>
+              <th width="33%">Task Section</th> 
+              <th width="20%">Type</th>
+              <th width="15%">Difficulty</th>
+              <th width="15%">Priority</th>
+            </tr>
+          </thead>
+          <tbody>${innerTable}</tbody>
+          </table>`;
+
+      if (document.getElementById('task-list-block')) {
+        document.getElementById('task-list-block').innerHTML = taskTable
+      }
+    }, 999);
+
+    setTimeout(() => {
+      clearTimeout(tableTimeout)
+    }, 6666)
   </script>
   <style>
     /*-- style.css --*/

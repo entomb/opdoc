@@ -6,23 +6,11 @@ import { emojify } from 'node-emoji'
 
 
 const heading: Renderer['heading'] = (text, level) => {
-  const classname = () => {
-    switch (level) {
-      case 1: return "mt-8 mb-2 text-3xl sm:text-4xl font-extrabold"
-      case 2: return "mt-4 mb-2 text-2xl sm:text-3xl font-extrabold"
-      case 3: return "mt-2 mb-2 text-xl sm:text-2xl font-bold"
-      default:
-        return "mt-8 mb-2 text-lg sm:text-xl font-bold"
-    }
-  };
-
-  return `${level === 1 ? `</article><article data-for="${slug(text)}">` : ''}<h${level} class="${classname()} text-slate-900 tracking-tight dark:text-slate-200" id="${slug(text)}">
-  ${text} <a href="#${slug(text)}" class="ml-2 inline-flex hidden" aria-label="Anchor">&#128279;</a>
-</h${level}>`
-}
-
-const strong: Renderer['strong'] = (text) => {
-  return `<b class="font-bold">${text}</b>`
+  return `${level === 1 ? `</article>
+  <article data-for="${slug(text)}">` : ''}
+    <h${level} id="${slug(text)}">
+       <a href="#${slug(text)}" class="no-underline text-inherit font-inherit">${text}</a>
+    </h${level}>`
 }
 
 export const emoji = {
@@ -90,7 +78,6 @@ export const infoquote = {
 export const renderer: Partial<Renderer> = {
   heading,
   strong: (text) => `<b class="font-bold">${text}</b>`,
-  // text: (text) => `<p class="mt-4 mb-4 font-md">${text}</b>`
 }
 
 

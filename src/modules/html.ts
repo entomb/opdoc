@@ -19,7 +19,7 @@ export const wrapper: FnTransformerFactory<{ source: string }> = ({ source }) =>
     .replace("<!-- $content -->", content)
     .replace("<!-- $sidebar -->", sidebar)
     .replace("/*-- tailwind.css --*/", tailwindCss)
-    .replace("/*-- style.css --*/", styleCss)
+  // .replace("/*-- style.css --*/", styleCss)
 }
 
 export const sanitize: FnTransformer = async content => sanitizeHtml(content)
@@ -39,7 +39,7 @@ const DarkModeButton = (): string => {
   return `<button
   id="theme-toggle"
   type="button"
-  class="fixed m-5 text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg text-sm p-2.5"
+  class="fixed right-0 m-5 text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg text-sm p-2.5 z-50"
 >
   <svg
     id="theme-toggle-dark-icon"

@@ -6,7 +6,7 @@
     @apply mb-4;
   }
   #nav > ul ul {
-    @apply space-y-6 lg:space-y-2 border-l border-slate-100 text-slate-400 dark:border-slate-800;
+    @apply space-y-8 lg:space-y-2 border-l border-slate-100 text-slate-400 dark:border-slate-800;
   }
   #nav ul ul a {
     @apply block border-l pl-4  -ml-px border-transparent hover:border-slate-400 dark:hover:border-slate-500 text-slate-700 hover:text-slate-900 dark:text-slate-400 dark:hover:text-slate-300;
@@ -31,13 +31,60 @@
     @apply text-slate-800 dark:text-slate-100 border-slate-800 dark:border-slate-100;
   }
 
-  h6:hover a,
-  h5:hover a,
-  h4:hover a,
-  h3:hover a,
-  h2:hover a,
-  h1:hover a {
-    display: inline-flex;
+  main h2 a,
+  main h1 a {
+    @apply tracking-tight font-extrabold !important;
+  }
+
+  main h5 a,
+  main h4 a,
+  main h3 a {
+    @apply tracking-tight font-bold !important;
+  }
+
+  main h1 {
+    font-size: 4em !important;
+    margin-top: 3em !important;
+    margin-bottom: 1em !important;
+    z-index: -1;
+    @apply dark:text-sky-100 !important;
+  }
+  main article:first-child h1:first-child {
+    padding: 30px;
+    height: 30vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  main h2 {
+    margin-top: 2.5em !important;
+    margin-bottom: 0.5em !important;
+    font-size: 2em !important;
+    @apply text-sky-900 dark:text-sky-600 !important;
+  }
+  main h3 {
+    margin-top: 2em !important;
+    margin-bottom: 0.5em !important;
+    font-size: 1.5em !important;
+    @apply border-b-4 border-sky-500 dark:border-sky-50 text-sky-800 dark:text-sky-100 !important;
+  }
+
+  main h4 {
+    @apply border-b p-1 pt-2 pl-0 border-sky-500 dark:border-sky-50 text-sky-800 dark:text-sky-100 !important;
+    font-size: 1.3em !important;
+  }
+
+  main p {
+    margin: 0;
+  }
+  main p + p {
+    padding-top: 0px;
+    margin-top: 0px !important;
+  }
+
+  main h5 {
+    font-size: 1.1em !important;
   }
 
   main pre {
@@ -45,8 +92,7 @@
   }
 
   main h3 + table {
-    border: 1px solid;
-    @apply border-slate-200 dark:border-slate-400;
+    @apply border border-slate-200 dark:border-slate-600;
     @apply text-slate-800 dark:text-slate-100;
   }
 
