@@ -22,7 +22,7 @@
     "@oclif/plugin-plugins": "^2.1.0",
     "@types/html-minifier-terser": "^6.1.0",
     "@types/marked": "^4.0.3",
-    "@types/node-emoji": "^1.8.1",
+    "@types/node-emoji": "^1.8.2",
     "@types/prismjs": "^1.26.0",
     "@types/sanitize-html": "^2.6.2",
     "@typescript-eslint/parser": "^4.33.0",
