@@ -1,6 +1,6 @@
 {
   "name": "opdoc",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "One Page Documentation",
   "author": "Jonathan Tavares @entomb",
   "bin": {
