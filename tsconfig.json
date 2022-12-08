@@ -1,7 +1,9 @@
 {
   "compilerOptions": {
+    "skipLibCheck": true,
     "declaration": true,
     "importHelpers": true,
+    "moduleResolution": "node",
     "module": "commonjs",
     "outDir": "dist",
     "rootDir": "src",

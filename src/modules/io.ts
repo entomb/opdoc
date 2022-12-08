@@ -4,7 +4,6 @@ import {
   copyFile as fsCopyFile,
   lstatSync as fsDataSync,
 } from 'node:fs'
-import * as glob from 'glob'
 import globby = require('globby')
 
 export const readFile = (file: string): Promise<string> => {
@@ -43,8 +42,12 @@ export const readDirectory = async (path: string): Promise<string> => {
   })).sort((a: string, b: string) => {
     return a.localeCompare(b)
   });
-  // console.log(files)
-  const content = await Promise.all(files.map(filename => readFile(filename)))
+
+  const content = await Promise.all(
+    files
+      .filter(filename => !filename.includes('node_modules/'))
+      .map(filename => readFile(filename))
+    )
 
   return content.map(c => c.toString()).join('\n\n')
 }
