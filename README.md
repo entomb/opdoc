@@ -58,7 +58,7 @@ EXAMPLES
     + writing to ./README.md
 ```
 
-_See code: [dist/commands/compile.ts](https://github.com/entomb/opdoc/blob/v0.1.17/dist/commands/compile.ts)_
+_See code: [dist/commands/compile.ts](https://github.com/entomb/opdoc/blob/v0.2.0/dist/commands/compile.ts)_
 
 ## `opdoc help [COMMAND]`
 
@@ -109,7 +109,7 @@ EXAMPLES
        $ opdoc parse ./path/to/folder
 ```
 
-_See code: [dist/commands/parse.ts](https://github.com/entomb/opdoc/blob/v0.1.17/dist/commands/parse.ts)_
+_See code: [dist/commands/parse.ts](https://github.com/entomb/opdoc/blob/v0.2.0/dist/commands/parse.ts)_
 
 ## `opdoc serve SOURCE`
 
@@ -141,5 +141,5 @@ EXAMPLES
         + serving on http://localhost:8181
 ```
 
-_See code: [dist/commands/serve.ts](https://github.com/entomb/opdoc/blob/v0.1.17/dist/commands/serve.ts)_
+_See code: [dist/commands/serve.ts](https://github.com/entomb/opdoc/blob/v0.2.0/dist/commands/serve.ts)_
 <!-- commandsstop -->
