@@ -19,7 +19,7 @@
   "dependencies": {
     "@oclif/core": "^1",
     "@oclif/plugin-help": "^5",
-    "@oclif/plugin-plugins": "^2.1.1",
+    "@oclif/plugin-plugins": "^2.1.12",
     "@types/html-minifier-terser": "^6.1.0",
     "@types/marked": "^4.0.7",
     "@types/node-emoji": "^1.8.1",
